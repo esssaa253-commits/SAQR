@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: rainbow-c2
+    env: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn --worker-class geventwebsocket.gunicorn.workers.GeventWebSocketWorker --bind 0.0.0.0:$PORT wsgi:app
+    envVars:
+      - key: BOT_TOKEN
+        value: 8695504759:AAHP-4I6ny00lyAQmGOupPb8EiN5mSFf8VU
+      - key: PYTHON_VERSION
+        value: 3.11.6
